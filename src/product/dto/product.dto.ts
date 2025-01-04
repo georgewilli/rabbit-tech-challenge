@@ -3,5 +3,4 @@ export class ProductDTO {
   name: string;
   category: string;
   area: string;
-  createdAt: Date;
 }

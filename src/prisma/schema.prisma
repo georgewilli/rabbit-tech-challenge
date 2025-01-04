@@ -11,9 +11,10 @@ model Product {
   id        Int      @id @default(autoincrement())
   name      String
   category  String
-  area String
+  area      String
   orders    OrderItem[]
   createdAt DateTime @default(now())
+  
 }
 
 model Order {
@@ -30,4 +31,6 @@ model OrderItem {
   productId Int
   order     Order    @relation(fields: [orderId], references: [id])
   orderId   Int
+
+  @@index([productId]) 
 }

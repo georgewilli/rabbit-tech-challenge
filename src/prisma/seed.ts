@@ -41,8 +41,7 @@ async function main() {
     const itemsCount = Math.floor(Math.random() * maxOrderItems) + 1;
 
     for (let j = 0; j < itemsCount; j++) {
-      const randomProductId =
-        productIds[Math.floor(Math.random() * productIds.length)];
+      const randomProductId = productIds[Math.floor(Math.random() * productIds.length)];
       orderItems.push({
         productId: randomProductId,
         quantity: Math.floor(Math.random() * 5) + 1,
@@ -52,7 +51,7 @@ async function main() {
 
     await prisma.orderItem.createMany({ data: orderItems });
   }
-  console.log("Seeding finished")
+  console.log("Seeding finished");
 }
 
 main()
