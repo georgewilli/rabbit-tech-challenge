@@ -16,9 +16,9 @@ export class OrderService {
   }
   async createOrder(orderData: CreateOrderDTO) {
     const newOrder = await this.orderRepository.create(orderData.customerId);
-    const notificationMessage = `A new order has been created with ID: ${newOrder.id}`;
-    await this.pushoverService.sendNotification(notificationMessage);
-    await this.orderItemService.createOrderItems(newOrder.id, orderData.items);
+   const orderItems = await this.orderItemService.createOrderItems(newOrder.id, orderData.items);
+   const notificationMessage = `New Order Created: ${newOrder.id}  - ${orderItems.length} items`;
+   await this.pushoverService.sendNotification(notificationMessage);
     return newOrder;
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderItemDTO } from './dto/create-order-item-dto';
 import { OrderItemRepository } from './order-item.repository';
 import { OrderItemDTO } from './dto/order-item.dto';
+import { OrderItem } from '@prisma/client';
 
 
 @Injectable()
@@ -18,10 +19,11 @@ export class OrderItemService {
     return newOrder;
   }
 
-  async createOrderItems(orderId: number, items: OrderItemDTO[]): Promise<void> {
+  async createOrderItems(orderId: number, items: OrderItemDTO[]): Promise<OrderItem[]> {
     const createPromises = items.map(item =>
       this.create({orderId, productId : item.productId , quantity: item.quantity}),
     );
-    await Promise.all(createPromises); 
+   const orderItems = await Promise.all(createPromises); 
+    return orderItems
   }
 }
