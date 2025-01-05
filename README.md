@@ -10,7 +10,7 @@ To enhance the performance of this feature, I wrote a raw SQL query that optimiz
 
 ### Details:
 **- SQL Query:** The query retrieves the top 10 most ordered products based on the frequency of orders.
-Performance Optimization: By directly querying the database using raw SQL, the system bypasses the overhead of complex ORM queries, leading to faster data retrieval times, especially when working with large datasets.
+**- Performance Optimization:** By directly querying the database using raw SQL, the system bypasses the overhead of complex ORM queries, leading to faster data retrieval times, especially when working with large datasets.
 
 ### Implementation
 
@@ -43,10 +43,12 @@ const topProductsQuery =
 
 ### Future Work
 To further improve the performance of the "Top 10 Most Frequently Ordered Products" query, we can do:
+
 **- Convert the Area to an Enum:** Currently, the area field is stored as a string in the database. Converting it to an enum (stored as a number) in the database will allow for better indexing and faster queries. The backend can convert the numeric value to a string when needed, which would allow for efficient querying and indexing on the area field, improving the overall performance of the API.
 
 ### Benefits:
 **- Improved Query Performance:** Numeric values are more efficient for indexing compared to strings.
+
 **- Better Data Integrity:** Using an enum ensures that the area field contains only valid values, reducing the likelihood of errors or inconsistencies in the database.
 
 
