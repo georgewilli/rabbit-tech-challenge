@@ -43,12 +43,12 @@ const topProductsQuery =
 
 ### Future Work
 To further improve the performance of the "Top 10 Most Frequently Ordered Products" query, we can do:
+**- Convert the Area to an Enum:** Currently, the area field is stored as a string in the database. Converting it to an enum (stored as a number) in the database will allow for better indexing and faster queries. The backend can convert the numeric value to a string when needed, which would allow for efficient querying and indexing on the area field, improving the overall performance of the API.
 
-Convert the Area to an Enum: Currently, the area field is stored as a string in the database. Converting it to an enum (stored as a number) in the database will allow for better indexing and faster queries. The backend can convert the numeric value to a string when needed, which would allow for efficient querying and indexing on the area field, improving the overall performance of the API.
-
-#### Benefits:
+### Benefits:
 **- Improved Query Performance:** Numeric values are more efficient for indexing compared to strings.
 **- Better Data Integrity:** Using an enum ensures that the area field contains only valid values, reducing the likelihood of errors or inconsistencies in the database.
+
 
 ## 2- Optimizing a Poorly Implemented List Products API
 
@@ -247,8 +247,11 @@ const pushover = new Pushover({
 This project has seen significant improvements in performance, functionality, and notification systems:
 
 **- Top 10 Most Frequently Ordered Products API:** By implementing an optimized raw SQL query, we enhanced the performance, ensuring faster and more accurate data retrieval.
+
 **- Optimized Product List API:** Pagination and filtering were added, along with query optimization to reduce redundant joins and improve indexing, resulting in better scalability and responsiveness.
+
 **- Unit Testing with Jest:** Comprehensive integration tests using Jest and a testing database were added to ensure that all features work as expected and to facilitate future changes with confidence.
+
 **- Pushover Notification Integration:** Real-time notifications were integrated using Pushover, ensuring that users are immediately alerted about new orders, providing a better user experience.
 
 ## Future Work:
